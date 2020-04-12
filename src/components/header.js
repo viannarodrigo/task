@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Button, Image, ImageBackground } from 'react-native';
+import { Entypo } from '@expo/vector-icons';
+import { StyleSheet, Text, View, Button, Image, ImageBackground, TouchableOpacity } from 'react-native';
 
 export default class Header extends Component {
     render() {
@@ -7,16 +8,23 @@ export default class Header extends Component {
         const fundo = require('../img/fundo.png');
         return(
             <View style={styles.container}>
-                <View style={{backgroundColor: 'powderblue'}}>
-                    <Image style={styles.imagem} source={superhero} /> 
+                <View style={styles.caixaImg}>
+                    <Image style={styles.imgSuper} source={superhero} /> 
                 </View>
-                <View style={{backgroundColor: 'skyblue'}}>
-                    <Text style={styles.texto1}> Super rápido</Text>
-                    <Text style={styles.texto2}> criando um novo app</Text> 
-                </View>
-                <ImageBackground style={styles.imagem} source={fundo}>                                                        
-                        <Button style={styles.btnSiga} title="siga em frente" />
-                </ImageBackground>                 
+                <View style={styles.caixaTxt}>
+                    <Text style={styles.txtTitulo} >Work happens</Text>
+                    <Text style={styles.txtSpan} >Get notified when work happens.</Text>
+                    <View style={styles.iconsDot} > 
+                        <Entypo name="dot-single" size={32} color="black" />
+                        <Entypo name="dot-single" size={32} color="#979797" />
+                        <Entypo name="dot-single" size={32} color="#979797" />
+                    </View>                    
+                </View>                
+                <ImageBackground style={styles.fundoBg} source={fundo} >                        
+                     <TouchableOpacity style={styles.btnSiga} >
+                             <Text style={styles.textBtn} >Get Started</Text>
+                     </TouchableOpacity>
+                </ImageBackground>                                                
             </View>
         )
    }
@@ -25,61 +33,63 @@ export default class Header extends Component {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignContent: 'center',
-        alignItems: 'center',
-        width: 375,
-        height: 812,
-        backgroundColor: "#959595",
-        paddingTop: 114       
-
-    },          
-    imagem: {
-        alignItems: "center",
-        justifyContent: "center",
-        width: 230,
-        height: 223    
+        flexDirection: "column", 
     },
-    texto1: {
-        textAlign: 'center',
-        marginTop: 55,
-        marginBottom: 10,
-        width: 375,
-        height: 29,       
+    caixaImg: {
+        flex: 2,
+        justifyContent: "center",
+        alignItems: "center",           
+    },          
+    imgSuper: {
+        width: 230,
+        height: 223,
+        marginTop: 100     
+    },
+    caixaTxt: { 
+        flex: 1,
+        paddingTop: 35,
+        flexDirection: "column",
+        alignItems: "center"        
+    },
+    iconsDot: {
+        marginTop: 25,
+        flexDirection: "row",                    
+    },
+    txtTitulo: { 
+        padding: 5,        
         fontSize: 24,
         fontWeight: "bold",
         fontStyle: "normal",
         letterSpacing: 0,
-        color: "#313131"
+        color: "#313131"        
     },
-    texto2: {
-        textAlign: 'center',
-        marginBottom: 10,
-        width: 375,
-        height: 22,
+    txtSpan: {
+        padding: 5, 
         opacity: 0.8,
         fontSize: 18,
         fontWeight: "500",
         fontStyle: "normal",
         letterSpacing: 0,
+        color: "#313131"        
+    },        
+    fundoBg: {        
+        flex: 2,
+        justifyContent: "center"
+    },
+    btnSiga: {     
+        height: 48,
+        marginHorizontal: 41,
+        alignContent: "center",
+        borderRadius: 5,
+        backgroundColor: "#ffffff"
+    },
+    textBtn:{
+        padding: 10,
+        alignSelf: 'center',
+        fontSize: 18,
+        fontWeight: "bold",
+        fontStyle: "normal",
+        letterSpacing: 0,
         color: "#313131"
-    },
-    fundo: {
-        flex: 1,
-        resizeMode: "cover",
-        justifyContent: "center",
-        width: 375,
-        height: 270        
-    },
-    btnSiga: {       
-        width: 293,
-        height: 48,
-        borderRadius: 5,
-        backgroundColor: "#ffffff"
-      },
-    buttonContainer: {
-        width: 293,
-        height: 48,
-        borderRadius: 5,
-        backgroundColor: "#ffffff"
-    }
+    }   
   });
